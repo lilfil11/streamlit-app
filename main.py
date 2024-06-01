@@ -26,7 +26,7 @@ with col1:
                 url = url_root + '/predict'
                 files = {'file': uploaded_file}
                 response = requests.post(url, files=files)
-            st.success(f'Done! {response.json()['predict']}')
+            st.success(f'Done! {response.json()["predict"]}')
         else:
             st.warning('Choose your image, please!', icon='😠')
 
@@ -38,7 +38,7 @@ with col1:
     st.write('Neural Network with architecture `EfficientNetV2` is used for predictions. This model is based on the '
              '[EfficientNetV2: Smaller Models and Faster Training.](https://arxiv.org/abs/2104.00298).')
     st.write('Compared to other popular architectures for CV, it has better results:')
-    st.image('src/test-metrics.png')
+    st.image('test-metrics.png')
 
 with col2:
     # Информация о датасете
@@ -51,7 +51,7 @@ with col2:
              'which is the largest dermatology source online built for the purpose of providing '
              'online medical education.')
     st.write('Samples have the following class distributions:')
-    st.image('src/distributions.jpg')
+    st.image('distributions.jpg')
     st.write('Class imbalance is corrected by adding augmentations to the training dataset.')
 
 # Всплывающий Sidebar слева
