@@ -16,15 +16,15 @@ with col1:
     # Загружаем изображение и получаем предсказание
     st.write('### Prediction :syringe:')
     uploaded_file = st.file_uploader('Upload your image:', type=['jpg', 'png', 'jpeg'],
-                                     help='You should upload an image, for which you want to get the prediction, '
-                                          'of one of the formats: `jpg`, `png` or `jpeg`')
+                                     help='You need to upload an image that you need to make a prediction for. '
+                                          'You can use the following file formats: `jpg`, `png` or `jpeg`')
 
     if st.button("Get prediction", type="primary"):
         if uploaded_file is not None:
             with st.spinner("Loading..."):
-                time.sleep(1)
+                time.sleep(0.5)
                 url = url_root + '/predict'
-                files = {'file': uploaded_file}
+                files = {'file_uploaded': uploaded_file}
                 response = requests.post(url, files=files)
             st.success(f'Done! {response.json()["predict"]}')
         else:
@@ -36,7 +36,7 @@ with col1:
     # Информаиця об используемой модели
     st.write('### What model is being used? :magic_wand:')
     st.write('Neural Network with architecture `EfficientNetV2` is used for predictions. This model is based on the '
-             '[EfficientNetV2: Smaller Models and Faster Training.](https://arxiv.org/abs/2104.00298).')
+             '[EfficientNetV2: Smaller Models and Faster Training](https://arxiv.org/abs/2104.00298).')
     st.write('Compared to other popular architectures for CV, it has better results:')
     st.image('test-metrics.png')
 
@@ -57,7 +57,7 @@ with col2:
 # Всплывающий Sidebar слева
 with st.sidebar:
     # Название окна
-    st.title('Information about the service')
+    st.title('HSE: year project')
 
     # Информация о сервисе
     url = url_root + '/stats'
